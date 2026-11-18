@@ -57,7 +57,6 @@ jobs:
           haxelib install lime
           haxelib install openfl
           haxelib --never install flixel
-          haxelib run lime setup flixel
           haxelib install flixel-tools --quiet
           haxelib install flixel-ui --quiet
           haxelib install flixel-addons 2.10.0 --quiet
