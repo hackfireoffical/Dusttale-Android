@@ -29,7 +29,7 @@ class NativeDusttaleModcharts
                 FlxTween.tween(receptor, {
                     x: receptor.x - 1000,
                     angle: receptor.angle + 1000
-                }, 0.6, {ease: FlxEase.quadOut});
+                }, 0.6, {ease: FlxEase.linear});
             }
 
             for (i in 4...8)
@@ -38,7 +38,7 @@ class NativeDusttaleModcharts
                 FlxTween.tween(receptor, {
                     x: receptor.x - 275,
                     angle: receptor.angle + 360
-                }, 0.6, {ease: FlxEase.quadOut});
+                }, 0.6, {ease: FlxEase.linear});
             }
         }
     }
