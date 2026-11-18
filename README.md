@@ -18,8 +18,8 @@ Open **Actions → Android APK Build → Run workflow**. The workflow checks out
 
 - 36 chart JSON files validated successfully in the inspected upstream checkout.
 - The engine already contains Dust-specific note rendering and effects.
-- Important Android compatibility work remains: song modcharts are gated to Windows in the current upstream code. Merely enabling that code on Android is not sufficient because its Lua runtime and bindings are Windows-only. These behaviors must be ported and tested individually before claiming feature parity.
-- Android build has not yet been verified by this project.
+- Added Android-native Haxe implementations for the three non-empty built-in receptor-motion modcharts (Hallucinations, Reality Check, Last Hope). The upstream Lua runtime remains Windows-only; arbitrary Lua modcharts are not enabled. The native port still needs in-game timing and visual verification.
+- Android build is being validated through GitHub Actions; no successful APK artifact has been confirmed yet.
 
 ## Credits and rights
 
