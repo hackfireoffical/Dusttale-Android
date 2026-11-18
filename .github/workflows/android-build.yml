@@ -22,6 +22,8 @@ jobs:
           ref: main
           path: upstream
 
+      - name: Checkout this port project\n        uses: actions/checkout@v4\n        with:\n          path: port-project
+
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
@@ -30,6 +32,8 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
 
       - name: Set up Android NDK
         uses: nttld/setup-ndk@v1
@@ -64,6 +68,9 @@ jobs:
           haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit.git --quiet
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git --quiet
           haxelib install actuate
+
+      - name: Apply Android chart compatibility patch
+        run: python3 port-project/scripts/apply-android-patches.py upstream
 
       - name: Configure Lime Android toolchain
         working-directory: upstream
