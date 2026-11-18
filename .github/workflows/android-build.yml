@@ -22,7 +22,10 @@ jobs:
           ref: main
           path: upstream
 
-      - name: Checkout this port project\n        uses: actions/checkout@v4\n        with:\n          path: port-project
+      - name: Checkout this port project
+        uses: actions/checkout@v4
+        with:
+          path: port-project
 
       - name: Set up Java
         uses: actions/setup-java@v4
