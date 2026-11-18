@@ -30,11 +30,11 @@ jobs:
           path: upstream
           fetch-depth: 1
 
-      - name: Set up Java
+      - name: Set up Java for Android SDK tools
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '11'
+          java-version: '17'
 
       - name: Set up Android NDK
         id: ndk
@@ -55,6 +55,12 @@ jobs:
           yes | "$SDKMANAGER" --licenses
           "$SDKMANAGER" --install "platform-tools" "platforms;android-33" "build-tools;33.0.2"
           echo "ANDROID_SDK_ROOT=$ANDROID_HOME" >> "$GITHUB_ENV"
+
+      - name: Set up Java for legacy Lime build
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
 
       - name: Install Haxe libraries
         working-directory: upstream
@@ -108,7 +114,7 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.ndk.outputs.ndk-path }}
         run: |
-          haxelib run lime build android -release --app-version="1.1.0-${{ github.run_number }}"
+          haxelib run lime build android --app-version="1.1.0-${{ github.run_number }}"
 
       - name: Collect APK
         if: success()
