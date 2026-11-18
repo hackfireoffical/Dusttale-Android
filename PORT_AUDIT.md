@@ -5,14 +5,20 @@
 - Project: TheoDeveloping/Dusttale-Android-Port.
 - Android orientation is landscape and fullscreen in Project.xml.
 - Android touch-control code exists under source/android/.
-- The checkout contained the Dusttale asset bundle; this project does not redistribute it.
+- The upstream checkout includes the Dusttale game asset bundle; this project does not redistribute it.
 - 36 chart JSON files parsed successfully.
-- The engine already has custom note-type rendering and dedicated gameplay effects.
+- The engine already contains Dust-specific note rendering and dedicated gameplay effects.
+- Ten song folders contain modchart.lua files. Most are empty callback stubs; three contain actual receptor motion: Hallucinations, Reality Check, and Last Hope.
 
-## Critical fidelity gap
+## Android chart compatibility work added here
 
-PlayState currently discovers song modcharts only under `#if windows`. ModchartState and its Lua bindings are also Windows-gated, and linc_luajit is declared for Windows only. Therefore Android does not execute the song Lua modcharts. Removing the guard alone would not work. The missing behaviors need an Android-compatible Lua runtime or native Haxe ports, then song-by-song validation.
+- Added source/NativeDusttaleModcharts.hx with Haxe-native implementations for the three non-empty built-in receptor-motion scripts.
+- Added scripts/apply-android-patches.py, which copies the class into a clean upstream checkout and injects Android-only start/update hooks.
+- The GitHub Actions workflow applies this patch before attempting the Android build.
+- This is a targeted port of the three non-empty built-in scripts, not general Lua support. Visual and timing parity still requires in-game testing.
 
 ## Build status
 
-The source inspection and chart validation were completed. An Android APK build has not yet been completed or tested. The Actions workflow in this repository is an initial reproducible build attempt, not a claim of a working APK.
+- Initial build attempt failed because the runner's current Android SDK command-line tools require JDK 17, while the first workflow used JDK 11.
+- The next workflow revision moved to JDK 17 and removed the obsolete SDK package named "tools".
+- The latest build attempt is in progress. No APK is confirmed yet.
