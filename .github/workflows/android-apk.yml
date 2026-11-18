@@ -1,3 +1,4 @@
+# Rebuild after Android source compatibility fixes.
 name: Android APK
 
 on:
