@@ -65,20 +65,20 @@ class NativeDusttaleModcharts
             {
                 speed = bpm / 150;
             }
-            else if (curStep > 238 && curStep < 752)
+            if (curStep > 238 && curStep < 752)
             {
                 speed = bpm / 30;
             }
-            else if (curStep > 751 && curStep < 1264)
+            if (curStep > 751 && curStep < 1264)
             {
                 speed = bpm / 150;
             }
-            else if (curStep > 1263 && curStep < 1769)
+            if (curStep > 1263 && curStep < 1769)
             {
                 speed = bpm / 20;
                 phase = 20.25;
             }
-            else if (curStep > 1835)
+            if (curStep > 1835)
             {
                 speed = bpm / 20;
                 phase = 1.25;
