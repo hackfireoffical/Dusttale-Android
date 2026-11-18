@@ -1,17 +1,25 @@
-# Dusttale Android — compatibility research
+# Dusttale Android
 
-This repository contains limited Android compatibility work for the existing Dusttale Android project.
+Android port work for **Friday Night Funkin': Dusttale Remastered**.
 
-## Included work
+## Goal
 
-- Audit of the upstream Android project and its chart data.
-- A Haxe-native implementation of selected receptor-motion sequences for rhythm-game compatibility.
-- A script that applies the patch to a local upstream checkout.
+Produce an installable Android build while preserving the original 2D rhythm-game experience: songs, charts, custom notes, character animations, cutscenes, visual effects, and touchscreen controls.
 
-## Important status
+## Current technical base
 
-This repository does **not** provide an installable APK or an APK build workflow. The full game package is not built here. Work is limited to non-weapon rhythm-game compatibility components.
+The build uses the existing Android-focused engine project [TheoDeveloping/Dusttale-Android-Port](https://github.com/TheoDeveloping/Dusttale-Android-Port). This repository contains Android compatibility patches and a GitHub Actions workflow that builds the upstream source with those patches applied.
 
-## Upstream and credits
+The patch adds native receptor-motion handling for selected chart sequences. It is not a general Lua modchart runtime, so exact timing and visual parity still require testing.
 
-The source engine and game project are based on [TheoDeveloping/Dusttale-Android-Port](https://github.com/TheoDeveloping/Dusttale-Android-Port). Original game assets remain in that upstream repository and are not redistributed here. Follow the upstream project's license and the asset creators' terms.
+## Build status
+
+GitHub Actions is being used to validate the Android toolchain and produce an APK artifact. A build is not considered complete until the APK has been generated successfully and tested on an Android device.
+
+## Version / assets note
+
+The upstream Android project supplies the current game assets. The GameBanana 1.1 download archive has not yet been verified as merged into this build, so this repository must not be described as a confirmed port of that exact archive.
+
+## Credits and rights
+
+Dusttale and Friday Night Funkin' are fan works. Original code and assets remain with their respective creators and upstream project. Follow the upstream license and the asset creators' terms.
