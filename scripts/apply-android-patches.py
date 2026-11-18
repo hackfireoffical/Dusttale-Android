@@ -30,3 +30,14 @@ if update_call not in text:
 
 play.write_text(text, encoding="utf-8")
 print("Applied Android-native chart hooks and copied NativeDusttaleModcharts.hx")
+
+# Keep the legacy game source compatible with the pinned modern HaxeFlixel API.
+title = root / "source" / "TitleState.hx"
+title_text = title.read_text(encoding="utf-8")
+title_text = title_text.replace("import flixel.system.FlxSound;\\n", "")
+title.write_text(title_text, encoding="utf-8")
+
+main = root / "source" / "Main.hx"
+main_text = main.read_text(encoding="utf-8")
+main_text = main_text.replace("initialState, zoom, framerate, framerate, skipSplash", "initialState, Std.int(zoom), framerate, framerate, skipSplash")
+main.write_text(main_text, encoding="utf-8")
